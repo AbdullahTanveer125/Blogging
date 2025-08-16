@@ -42,6 +42,7 @@ app.use('/api', uploadRoute);
 
 
 const PORT = process.env.PORT || 5000;
+console.log("Check port =====", process.env.PORT)
 
 // Start server
 app.listen(PORT, () => {
