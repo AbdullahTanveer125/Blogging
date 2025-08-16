@@ -3,7 +3,8 @@
 
 import { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
-import { store } from '../redux/store';
+// import { store } from '../redux/store';
+import { store } from '../Redux/store.jsx';
 import { loadFromStorage } from '../Slices/userSlice'; // adjust path if needed
 
 

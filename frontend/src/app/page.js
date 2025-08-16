@@ -7,7 +7,9 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from "../Slices/userSlice";
-import UserDetails from "@/components/userDetails";
+// import UserDetails from "@/components/userDetails";
+// import UserDetails from '@/components/UserDetails';
+
 import AllPosts from "@/components/AllPosts";
 import Hero from "@/components/Hero";
 
