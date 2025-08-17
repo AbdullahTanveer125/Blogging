@@ -14,7 +14,7 @@ const AllPosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                // console.log('process.env.NEXT_PUBLIC_HTTP_URL...', process.env.NEXT_PUBLIC_HTTP_URL);
+                console.log('process.env.NEXT_PUBLIC_HTTP_URL...', `${process.env.NEXT_PUBLIC_HTTP_URL}/api/posts`);
                 setLoading(true);
                 const res = await axios.get(`${process.env.NEXT_PUBLIC_HTTP_URL}/api/posts`);
 
