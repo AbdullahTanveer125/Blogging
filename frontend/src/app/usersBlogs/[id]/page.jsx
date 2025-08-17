@@ -164,7 +164,7 @@ const YourBlogs = () => {
             try {
                 setLoading(true);
                 const res = await axios.get(
-                    `${process.env.NEXT_PUBLIC_HTTP_URL}/my-blogs/${user._id}`,
+                    `${process.env.NEXT_PUBLIC_HTTP_URL}/api/my-blogs/${user._id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

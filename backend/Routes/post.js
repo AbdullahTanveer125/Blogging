@@ -18,24 +18,24 @@ const { createPost,
 
 
 
-postRouter.post('/api/posts', verifyToken, createPost); // Authenticated route
+postRouter.post('/posts', verifyToken, createPost); // Authenticated route
 
 // postRouter.get('/api/posts/:id', getSpecificPost);
 
 // GET all posts
-postRouter.get('/api/posts', getAllPost);
+postRouter.get('/posts', getAllPost);
 
 // GET single post by ID (already provided earlier)
-postRouter.get('/api/posts/:id', verifyToken, getSpecificPost);
+postRouter.get('/posts/:id', verifyToken, getSpecificPost);
 
 
 postRouter.get('/my-blogs/:id', verifyToken, yourAllPost);
 
 
 // PUT: Update post by ID
-postRouter.put('/api/posts/:id', verifyToken, updatePost);
+postRouter.put('/posts/:id', verifyToken, updatePost);
 
 
-postRouter.delete('/api/posts/:id', verifyToken, deletePost);
+postRouter.delete('/posts/:id', verifyToken, deletePost);
 
 module.exports = postRouter;

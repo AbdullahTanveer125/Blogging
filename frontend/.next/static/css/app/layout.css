@@ -422,9 +422,6 @@
   .mt-32 {
     margin-top: calc(var(--spacing) * 32);
   }
-  .mt-40 {
-    margin-top: calc(var(--spacing) * 40);
-  }
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
   }
@@ -1371,13 +1368,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
-      }
-    }
-  }
-  .hover\:underline {
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-line: underline;
       }
     }
   }

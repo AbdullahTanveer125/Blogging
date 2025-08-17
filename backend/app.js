@@ -35,8 +35,8 @@ const postRouter=require("./Routes/post.js");
 
 
 //to use router 
-app.use(userRouter);
-app.use(postRouter);
+app.use('/api', userRouter);
+app.use('/api', postRouter);
 app.use('/api', uploadRoute);
 
 

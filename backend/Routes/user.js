@@ -6,9 +6,9 @@ const { signup, login, getUser } = require('../Controllers/user');
 const verifyToken = require('../Middlewares/auth');
 
 
-userRouter.post('/api/auth/signup', signup);
+userRouter.post('/auth/signup', signup);
 
-userRouter.post('/api/auth/login', login);
+userRouter.post('/auth/login', login);
 
 
 userRouter.get('/user/get/:id', getUser);
