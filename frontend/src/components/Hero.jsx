@@ -46,12 +46,12 @@ export default function Hero() {
                             >
                                 Explore Blogs
                             </Link>
-                            <Link
-                                href="/register"
+                            <div
+                                
                                 className="px-8 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-colors"
                             >
                                 Join Our Community
-                            </Link>
+                            </div>
                         </div>
 
                         <div className="hero-text-animate mt-12 flex items-center justify-center md:justify-start space-x-4 transform translate-y-10 opacity-0 transition-all duration-500 delay-300">

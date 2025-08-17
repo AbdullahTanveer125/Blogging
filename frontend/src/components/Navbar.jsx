@@ -89,7 +89,7 @@ export default function Navbar() {
                             </Link>
 
                             <Link href="/posts" className=" hover:text-blue-500 hover:bg-white px-3 py-2 rounded-md  text-white font-bold transition duration-300">
-                                Blogs
+                                All Blogs
                             </Link>
 
 
@@ -99,6 +99,10 @@ export default function Navbar() {
                                 <>
                                     <Link href="/posts/new" className=" hover:text-blue-500 hover:bg-white px-3 py-2 rounded-md  text-white font-bold transition duration-300">
                                         Create Blog
+                                    </Link>
+
+                                    <Link href={`/usersBlogs/${user._id}`} className=" hover:text-blue-500 hover:bg-white px-3 py-2 rounded-md  text-white font-bold transition duration-300">
+                                        Your Blogs
                                     </Link>
 
                                     <button
@@ -177,46 +181,71 @@ export default function Navbar() {
                     >
                         Home
                     </Link>
-                    <Link
-                        href="/about_us"
+                    <Link href="/posts"
                         onClick={closeMobileMenu}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-800 transition duration-300"
-                    >
-                        About Us
+                        className=" hover:text-blue-500 hover:bg-white px-3 py-2 rounded-md font-bold  text-white">
+                        All Blogs
                     </Link>
-                    <Link
-                        href="/contact_us"
-                        onClick={closeMobileMenu}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-800 transition duration-300"
-                    >
-                        Contact Us
-                    </Link>
-                    <Link
-                        href="/services"
-                        onClick={closeMobileMenu}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-800 transition duration-300"
-                    >
-                        Services
-                    </Link>
-                    <div className="px-3 pt-2 pb-3 flex space-x-4">
+
+
+                    {user ? (
+                        <>
+                            <div className='flex flex-col items-start mt-2'>
+                                <Link href="/posts/new"
+                                    onClick={closeMobileMenu}
+                                    className=" hover:text-blue-500 hover:bg-white px-3 py-2 rounded-md  text-white font-bold transition duration-300">
+                                    Create Blog
+                                </Link>
+
+                                <Link href={`/usersBlogs/${user._id}`}
+                                    onClick={closeMobileMenu}
+                                    className=" hover:text-blue-500 hover:bg-white px-3 py-2 rounded-md  text-white font-bold transition duration-300">
+                                    Your Blogs
+                                </Link>
+
+                                <button
+                                    onClick={handleLogout}
+                                    className="px-3 text-white font-bold cursor-pointer "
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+
+
+                        </>
+                    )}
+
+
+                    <div className="px-3 pt-2 pb-3 flex flex-row justify-center space-x-4 mt-10 ">
                         {user ? (
                             <>
                                 <div className='text-white'>Login as <span className='bg-white text-black px-3 py-1 rounded-md'>{user.name}</span></div>
                             </>
                         ) : (
                             <>
-                                <button
+                                {/* <button
                                     onClick={() => signIn()}
                                     className="bg-transparent text-white border border-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer flex-1 text-center"
                                 >
                                     Login
-                                </button>
-                                {/* <button
-                                    onClick={() => signIn()}
-                                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 cursor-pointer flex-1 text-center"
-                                >
-                                    Sign Up
                                 </button> */}
+                                <Link
+                                    href="/login"
+                                    onClick={closeMobileMenu}
+                                    className="px-5 py-2 border-2 border-blue-500 rounded-full text-white font-bold hover:bg-black hover:text-white hover:border-black transition-all duration-300 cursor-pointer flex items-center gap-2"
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    href="/signup"
+                                    onClick={closeMobileMenu}
+                                    className="bg-white px-5 py-2 border-2 border-blue-500 rounded-full text-blue-500 hover:bg-black hover:text-white hover:border-black transition-all duration-300 cursor-pointer flex items-center gap-2"
+                                >
+                                    <FaUser size={14} /> Sign-up
+                                </Link>
                             </>
                         )}
                     </div>

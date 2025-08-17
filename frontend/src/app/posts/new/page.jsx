@@ -22,6 +22,8 @@ const CreatePost = () => {
     const [imageFile, setImageFile] = useState(null);
     const [uploading, setUploading] = useState(false);
     const [imagePreview, setImagePreview] = useState(null);
+    const [error, setError] = useState('');
+
 
     const handleChange = e => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -52,7 +54,12 @@ const CreatePost = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        if (form.tags.trim() && !form.tags.includes(',')) {
+            setError("Please separate multiple tags with commas (e.g. react, javascript, webdev).");
+            return; // stop submission
+        }
 
+        setError('');
         try {
             setUploading(true);
             let imageUrl = form.image;
@@ -72,7 +79,7 @@ const CreatePost = () => {
             });
 
             if (res.data.success) {
-                
+
                 setForm({
                     title: '',
                     content: '',
@@ -147,14 +154,20 @@ const CreatePost = () => {
                             <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
                                 Category
                             </label>
-                            <input
+                            <select
                                 id="category"
                                 name="category"
                                 value={form.category}
                                 onChange={handleChange}
-                                placeholder="e.g. Technology, Travel, Food"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                            />
+                            >
+                                <option value="">Select a category</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Health">Health</option>
+                                <option value="Education">Education</option>
+                                <option value="News">News</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
 
                         {/* Tags Field */}
@@ -170,6 +183,7 @@ const CreatePost = () => {
                                 placeholder="e.g. react, javascript, webdev"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             />
+                            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
                         </div>
 
                         {/* Image Upload */}

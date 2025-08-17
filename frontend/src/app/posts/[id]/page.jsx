@@ -11,20 +11,26 @@ const PostDetailPage = () => {
 
     const { user } = useSelector(state => state.user);
     const { token } = useSelector(state => state.user);
+    
+    
 
     console.log("Token in [id]----> page", token)
     const { id } = useParams();
     const router = useRouter();
     const [post, setPost] = useState(null);
+    const [your, setYour] = useState(false);
 
     useEffect(() => {
         const fetchPost = async () => {
             try {
+                
                 const res = await axios.get(`${process.env.NEXT_PUBLIC_HTTP_URL}/api/posts/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
+                console.log("Response from post API: ", res.data.post.author);
+                if (res.data.post.author==user._id) setYour(true);
                 // const data = await res.json();
                 if (res.data.success) setPost(res.data.post);
             } catch (err) {
@@ -79,7 +85,7 @@ const PostDetailPage = () => {
 
 
 
-            {user ? (
+            {your ? (
                 <>
                     <button
                         className="mt-6 px-4 py-2 bg-blue-500 font-bold text-white rounded hover:bg-blue-700 cursor-pointer"

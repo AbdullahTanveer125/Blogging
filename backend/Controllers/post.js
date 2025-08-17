@@ -36,6 +36,7 @@ const getAllPost = async (req, res) => {
   try {
     console.log("in All Posts")
     const posts = await POST.find().sort({ createdAt: -1 }); // latest first
+    // console.log("posts= ", posts);
     res.json({ success: true, posts });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Failed to fetch posts', error });
@@ -53,6 +54,16 @@ const getSpecificPost = async (req, res) => {
   }
 }
 
+
+const yourAllPost = async (req, res) => {
+  try {
+    console.log("req.params.id== ", req.params.id)
+    const posts = await POST.find({ author: req.user.id }).sort({ createdAt: -1 }); // latest first
+    res.json({ success: true, posts });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+}
 
 const updatePost = async (req, res) => {
   try {
@@ -100,4 +111,4 @@ const deletePost = async (req, res) => {
 
 
 
-module.exports = { createPost, getAllPost, getSpecificPost, updatePost, deletePost };
+module.exports = { createPost, getAllPost, getSpecificPost, yourAllPost, updatePost, deletePost };
