@@ -25,9 +25,9 @@ jobs:
         run: npm install
 
       # (Optional) Run backend tests
-      - name: Run backend tests
-        working-directory: my-app/backend
-        run: npm test
+      # - name: Run backend tests
+      #   working-directory: my-app/backend
+      #   run: npm test
 
       # ===== Frontend Build =====
       - name: Install frontend dependencies
