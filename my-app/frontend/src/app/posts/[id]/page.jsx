@@ -24,13 +24,9 @@ const PostDetailPage = () => {
         const fetchPost = async () => {
             try {
                 
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_HTTP_URL}/api/posts/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                console.log("Response from post API: ", res.data.post.author);
-                if (res.data.post.author==user._id) setYour(true);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_HTTP_URL}/api/posts/${id}`);
+                console.log("Response from post API: ", res);
+                if (res.data.post.author==user?._id) setYour(true);
                 // const data = await res.json();
                 if (res.data.success) setPost(res.data.post);
             } catch (err) {

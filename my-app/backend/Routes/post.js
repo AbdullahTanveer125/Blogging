@@ -26,7 +26,7 @@ postRouter.post('/posts', verifyToken, createPost); // Authenticated route
 postRouter.get('/posts', getAllPost);
 
 // GET single post by ID (already provided earlier)
-postRouter.get('/posts/:id', verifyToken, getSpecificPost);
+postRouter.get('/posts/:id', getSpecificPost);
 
 
 postRouter.get('/my-blogs/:id', verifyToken, yourAllPost);

@@ -46,7 +46,9 @@ const getAllPost = async (req, res) => {
 
 const getSpecificPost = async (req, res) => {
   try {
+    // console.log("in getSpecificPost, req.params.id= ", req.params.id);
     const post = await POST.findById(req.params.id);
+    // console.log("post found= ", post);
     if (!post) return res.status(404).json({ success: false, message: 'Post not found' });
     res.json({ success: true, post });
   } catch (error) {
